@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html ng-app="firstapp">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="node_modules/angular/angular.js"></script>
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+      
+   
+      <h1 ng-controller="header" style="text-align:center">{{header}}</h1>
+    
+      <div class="container">
+    <div ng-controller="formhtml" style="text-align:center">
+      <h2>Tell me your name first </h2>
+      <form>
+        <p>Type your name below.</p>
+        <input type="text" ng-model="name" >
+      </form>
+      <h3> Hey {{name}} welcome to our house property sales</h3>
+    </div>
+    <div class="button" ng-controller="houses">
+      <button id="btn" ng-click="houselist()"> View the houses available and click on the headings to sort.</button> <br><br>
+      
+      <table class="table">
+        
+        <tr>
+          <th ng-click="orderBy1('name')">
+            Name of Houses
+          </th>
+          <th ng-click="orderBy1('location')">
+           location
+          </th>
+          <th ng-click="orderBy1('price')">
+            Prices
+          </th>
+        </tr>
+        <tr ng-repeat="house in list | orderBy:ordertble">
+         <td>{{ house.name}}</td>
+         <td>{{house.location}}</td>
+         <td>{{house.price|currency}}</td>
+         
+        </tr>
+      </table>
+    </div><br><br>
+    <div class="button" np-controller="generatediscount"> 
+        <button id="btn" ng-click="generate()"> Click to see what percentage of discount you can attain</button> <br><br>
+        {{randomno1}}
+    </div>
+   
+    </div>
+  
+  </body>
+</html>
